@@ -17,7 +17,7 @@
       packages = [nix-secrets.packages.x86_64-linux.nix-secrets];
     };
 
-    nixosConfigurations.repro = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nitro5 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         nix-secrets.nixosModules.default
@@ -32,7 +32,7 @@
             secrets = {
               chungus-secret = {
                 recipients = ["master"];
-                owner = "repro";
+                owner = "zx";
                 group = "users";
                 mode = "0600";
               };
