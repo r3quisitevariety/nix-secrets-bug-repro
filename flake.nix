@@ -11,6 +11,12 @@
     nix-secrets,
     ...
   }: {
+    packages.x86_64-linux.nix-secrets = nix-secrets.packages.x86_64-linux.nix-secrets;
+
+    devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+      packages = [nix-secrets.packages.x86_64-linux.nix-secrets];
+    };
+
     nixosConfigurations.repro = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
